@@ -6,6 +6,12 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+
+### `npm install --force`
+
+Because a dependcy issue we need to bypass the dependency to react 16 on a package.
+
+
 ### `npm start`
 
 Runs the app in the development mode.\

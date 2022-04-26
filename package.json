@@ -12,11 +12,11 @@
     "buffer": "^6.0.3",
     "node-sass": "^7.0.1",
     "react": "^18.0.0",
-    "react-custom-tree": "^1.0.3",
     "react-dom": "^18.0.0",
-    "react-dropzone": "^12.0.5",
     "react-json-tree": "^0.12.0",
     "react-scripts": "5.0.1",
+    "stream": "^0.0.2",
+    "stream-browserify": "^3.0.0",
     "timers": "^0.1.1",
     "web-vitals": "^2.1.4",
     "xml2js": "^0.4.23"

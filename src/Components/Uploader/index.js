@@ -12,7 +12,6 @@ export default function Child({ childToParent }) {
                 reader.onload = function (event) {
 
                         var parseString = require('xml2js').parseString;
-                        var data = ""
                         parseString(event.target.result, function (err, result) {
                                 setText(result);
                         });

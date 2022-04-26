@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react'
+import React, { useState } from 'react'
 
 import JSONTree from 'react-json-tree'
 import Uploader from "./Components/Uploader"
@@ -12,7 +12,6 @@ export default function App() {
   const childToParent = (childdata) => {
     setData(childdata);
 
-    console.log("data",);
   }
 
   return (
