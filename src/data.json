@@ -1,0 +1,139 @@
+{
+  "policy": {
+    "description": {
+      "__prefix": "xacml3",
+      "__text": "This Policy controls access to documents and makes sure only\nthose managers at Axiomatics with the right level of clearance can view\nthem."
+    },
+    "policydefaults": {
+      "xpathversion": {
+        "__prefix": "xacml3",
+        "__text": "http://www.w3.org/TR/1999/REC-xpath-1999111\n6"
+      },
+      "__prefix": "xacml3"
+    },
+    "target": {
+      "anyof": {
+        "allof": {
+          "match": [
+            {
+              "attributevalue": {
+                "_datatype": "http://www.w3.org/2001/XMLSchema#string",
+                "__prefix": "xacml3",
+                "__text": "manager"
+              },
+              "attributedesignator": {
+                "_attributeid": "urn:org:apache:tomcat:user-role",
+                "_category": "urn:oasis:names:tc:xacml:1.0:subject-category:access-subject",
+                "_datatype": "http://www.w3.org/2001/XMLSchema#string",
+                "_mustbepresent": "false",
+                "__prefix": "xacml3"
+              },
+              "_matchid": "urn:oasis:names:tc:xacml:1.0:function:string-equal",
+              "__prefix": "xacml3"
+            },
+            {
+              "attributevalue": {
+                "_datatype": "http://www.w3.org/2001/XMLSchema#string",
+                "__prefix": "xacml3",
+                "__text": "Axiomatics"
+              },
+              "attributedesignator": {
+                "_attributeid": "company",
+                "_category": "urn:oasis:names:tc:xacml:1.0:subject-category:access-subject",
+                "_datatype": "http://www.w3.org/2001/XMLSchema#string",
+                "_mustbepresent": "false",
+                "__prefix": "xacml3"
+              },
+              "_matchid": "urn:oasis:names:tc:xacml:3.0:function:string-equal-ignore-case",
+              "__prefix": "xacml3"
+            },
+            {
+              "attributevalue": {
+                "_datatype": "http://www.w3.org/2001/XMLSchema#string",
+                "__prefix": "xacml3",
+                "__text": "view"
+              },
+              "attributedesignator": {
+                "_attributeid": "urn:oasis:names:tc:xacml:1.0:action:action-id",
+                "_category": "urn:oasis:names:tc:xacml:3.0:attribute-category:action",
+                "_datatype": "http://www.w3.org/2001/XMLSchema#string",
+                "_mustbepresent": "false",
+                "__prefix": "xacml3"
+              },
+              "_matchid": "urn:oasis:names:tc:xacml:1.0:function:string-equal",
+              "__prefix": "xacml3"
+            },
+            {
+              "attributevalue": {
+                "_datatype": "http://www.w3.org/2001/XMLSchema#string",
+                "__prefix": "xacml3",
+                "__text": "document"
+              },
+              "attributedesignator": {
+                "_attributeid": "urn:oasis:names:tc:xacml:1.0:resource:resource-id",
+                "_category": "urn:oasis:names:tc:xacml:3.0:attribute-category:resource",
+                "_datatype": "http://www.w3.org/2001/XMLSchema#string",
+                "_mustbepresent": "false",
+                "__prefix": "xacml3"
+              },
+              "_matchid": "urn:oasis:names:tc:xacml:1.0:function:string-equal",
+              "__prefix": "xacml3"
+            }
+          ],
+          "__prefix": "xacml3"
+        },
+        "__prefix": "xacml3"
+      },
+      "__prefix": "xacml3"
+    },
+    "rule": {
+      "description": {
+        "__prefix": "xacml3",
+        "__text": "grant if the subject clearance is greater than the document\nclassification"
+      },
+      "target": {
+        "condition": {
+          "apply": {
+            "apply": [
+              {
+                "attributedesignator": {
+                  "_attributeid": "urn:org:apache:tomcat:user-attr:clearance",
+                  "_category": "urn:oasis:names:tc:xacml:1.0:subject-category:access-subject",
+                  "_datatype": "http://www.w3.org/2001/XMLSchema#string",
+                  "_mustbepresent": "false",
+                  "__prefix": "xacml3"
+                },
+                "_functionid": "urn:oasis:names:tc:xacml:1.0:function:string-one-and-only",
+                "__prefix": "xacml3"
+              },
+              {
+                "attributedesignator": {
+                  "_attributeid": "classification",
+                  "_category": "urn:oasis:names:tc:xacml:3.0:attribute-category:resource",
+                  "_datatype": "http://www.w3.org/2001/XMLSchema#string",
+                  "_mustbepresent": "false",
+                  "__prefix": "xacml3"
+                },
+                "_functionid": "urn:oasis:names:tc:xacml:1.0:function:string-one-and-only",
+                "__prefix": "xacml3"
+              }
+            ],
+            "_functionid": "urn:oasis:names:tc:xacml:1.0:function:string-greater-than-or-equal",
+            "__prefix": "xacml3"
+          },
+          "__prefix": "xacml3"
+        },
+        "__prefix": "xacml3"
+      },
+      "_effect": "Permit",
+      "_ruleid": "permit-if-clearance-ok",
+      "__prefix": "xacml3"
+    },
+    "_xmlns:xacml3": "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17",
+    "_policyid": "access-document",
+    "_rulecombiningalgid": "urn:oasis:names:tc:xacml:3.0:rule-combining-algorithm:deny-unless-p ermit",
+    "_version": "1",
+    "__prefix": "xacml3",
+    "__text": "aa"
+  }
+}

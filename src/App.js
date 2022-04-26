@@ -1,25 +1,51 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component, useState } from 'react'
 
-function App() {
+import JSONTree from 'react-json-tree'
+import Uploader from "./Components/Uploader"
+
+
+
+export default function App() {
+
+  const [data, setData] = useState('');
+
+  const childToParent = (childdata) => {
+    setData(childdata);
+
+    console.log("data",);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+
+
+      <Uploader childToParent={childToParent} />
+
+      <div className="result">
+        <div class="result-wraper">
+          <h2>Plain Tree</h2>
+
+          <div className="result-container">
+
+
+            <pre>
+              {JSON.stringify(data, undefined, 4)}
+            </pre>
+          </div>
+        </div>
+        <div class="result-wraper">
+
+          <h2>Collapsible Tree</h2>
+
+          <div className="result-container">
+            <JSONTree data={data} />
+          </div>
+        </div>
+
+      </div>
     </div>
-  );
+  )
 }
 
-export default App;
+
+
