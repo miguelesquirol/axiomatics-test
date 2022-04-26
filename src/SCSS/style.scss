@@ -57,7 +57,7 @@ code {
   &-container {
     flex-basis: 100%;
     overflow: scroll;
-    max-height: calc(100vh - 313px);
+    max-height: calc(100vh - 382px);
     background-color: $background;
 
     @media only screen and (max-width: 760px) {
